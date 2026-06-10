@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class AboutController extends Controller
+class ExperienceController extends Controller
 {
     public function index()
     {

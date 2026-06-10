@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class AboutController extends Controller
+class AchievementController extends Controller
 {
     public function index()
     {

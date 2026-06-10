@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-class AboutController extends Controller
+class PortfolioController extends Controller
 {
     public function index()
     {
-        return view('portofolio.index');
-    }
-
-     public function show($slug)
-    {
-        return view('portfolio.show');
+        return view('portfolio.index');
     }
 }
