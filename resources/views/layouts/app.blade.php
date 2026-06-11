@@ -260,5 +260,8 @@
     {{-- Slot untuk script tambahan per halaman --}}
     @yield('scripts')
 
+    {{-- ===== AI ASSISTANT WIDGET ===== --}}
+    @include('components.ai-assistant')
+
 </body>
 </html>
