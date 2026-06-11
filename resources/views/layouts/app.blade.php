@@ -94,8 +94,8 @@
             <div class="bg-secondary/90 backdrop-blur-md rounded-2xl px-6 py-3 flex items-center justify-between">
 
                 <a href="{{ route('home') }}"
-                   class="font-heading font-bold text-xl text-primary tracking-tight">
-                    &lt;YourName /&gt;
+                   class="font-heading font-bold text-base sm:text-xl text-primary tracking-tight">
+                    Shilmi's Web Profile
                 </a>
 
                 {{-- Desktop Navigation --}}
@@ -184,7 +184,7 @@
 
                 {{-- Brand --}}
                 <div>
-                    <p class="font-heading font-bold text-2xl text-primary mb-2">&lt;YourName /&gt;</p>
+                    <p class="font-heading font-bold text-2xl text-primary mb-2">Shilmi's Web Profile</p>
                     <p class="text-background/60 text-sm max-w-xs">
                         Creative student exploring the intersection of technology and visual storytelling.
                     </p>
@@ -214,7 +214,7 @@
             {{-- Bottom Bar --}}
             <div class="border-t border-background/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-background/40 text-xs">
-                    © {{ date('Y') }} YourName. Built with Laravel & ❤️
+                    © {{ date('Y') }} Shilmi's Web Profile. Built with Laravel & ❤️
                 </p>
                 <div class="flex gap-4">
                     <a href="#" class="text-background/40 text-xs hover:text-primary transition-colors">Instagram</a>

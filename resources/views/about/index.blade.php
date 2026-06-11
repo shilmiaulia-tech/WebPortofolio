@@ -30,9 +30,7 @@
                         production to graphic design, I love exploring it all.
                     </p>
                     <p class="text-dark/60 text-lg leading-relaxed">
-                        When I'm not studying, you'll find me experimenting with new design tools,
-                        binge-watching short films for "research," or overthinking color palettes
-                        for a project nobody asked for yet.
+                        When I'm not studying, you'll usually find me singing with my choir or actively competing in choral competitions.
                     </p>
                 </div>
 
@@ -58,7 +56,7 @@
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-dark/40 text-sm">Study</span>
-                                <span class="text-dark text-sm font-medium">D3 Multimedia</span>
+                                <span class="text-dark text-sm font-medium">    D3 Teknologi Multimedia dan Broadcasting</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-dark/40 text-sm">Semester</span>
@@ -66,7 +64,7 @@
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-dark/40 text-sm">Based in</span>
-                                <span class="text-dark text-sm font-medium">Indonesia 🇮🇩</span>
+                                <span class="text-dark text-sm font-medium">Indonesia</span>
                             </div>
                         </div>
                     </div>
@@ -89,7 +87,7 @@
                 {{-- Skill Card --}}
                 @php
                 $skills = [
-                    ['icon' => '🎬', 'title' => 'Video Production', 'desc' => 'Shooting, editing, and storytelling through motion. Premiere Pro is my second home.', 'bg' => 'bg-secondary', 'text' => 'text-background', 'sub' => 'text-background/50'],
+                    ['icon' => '✍️', 'title' => 'Creative', 'desc' => 'Brainstorming concepts, shaping narratives, and bringing big ideas to life. The creative room is my second home.', 'bg' => 'bg-secondary', 'text' => 'text-background', 'sub' => 'text-background/50'],
                     ['icon' => '🎨', 'title' => 'Graphic Design', 'desc' => 'Crafting visual identities and layouts that communicate without words.', 'bg' => 'bg-primary', 'text' => 'text-dark', 'sub' => 'text-dark/50'],
                     ['icon' => '📸', 'title' => 'Photography', 'desc' => 'Finding the right frame to freeze a moment worth keeping.', 'bg' => 'bg-white/40 border border-white/60', 'text' => 'text-dark', 'sub' => 'text-dark/40'],
                     ['icon' => '✍️', 'title' => 'Content Writing', 'desc' => 'Writing copy and captions that actually sound like a real human.', 'bg' => 'bg-accent', 'text' => 'text-white', 'sub' => 'text-white/60'],

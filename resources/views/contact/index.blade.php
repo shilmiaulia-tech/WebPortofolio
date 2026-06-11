@@ -36,8 +36,8 @@
                     {{-- Email Card --}}
                     <div class="bg-secondary rounded-3xl p-6">
                         <p class="text-background/40 text-xs uppercase tracking-widest mb-2">Email</p>
-                        <p class="text-primary font-semibold text-lg">hello@yourname.com</p>
-                        <p class="text-background/40 text-xs mt-1">Usually replies within 24h</p>
+                        <p class="text-primary font-semibold text-lg">shilmiaulia@gmail.com</p>
+                        <p class="text-background/40 text-xs mt-1">Usually replies in 3 days</p>
                     </div>
 
                     {{-- Social Media --}}
@@ -46,9 +46,9 @@
                         <div class="flex flex-col gap-3">
                             @php
                             $socials = [
-                                ['platform' => 'Instagram', 'handle' => '@yourhandle', 'bg' => 'bg-pink-100', 'text' => 'text-pink-600'],
-                                ['platform' => 'LinkedIn', 'handle' => 'Your Name', 'bg' => 'bg-blue-100', 'text' => 'text-blue-600'],
-                                ['platform' => 'Behance', 'handle' => 'yourname', 'bg' => 'bg-indigo-100', 'text' => 'text-indigo-600'],
+                                ['platform' => 'Instagram', 'handle' => '@shilmi_yus', 'bg' => 'bg-pink-100', 'text' => 'text-pink-600'],
+                                ['platform' => 'LinkedIn', 'handle' => 'Shilmi Aulia Yustina', 'bg' => 'bg-blue-100', 'text' => 'text-blue-600'],
+                                ['platform' => 'WhatsApp', 'handle' => '+62 81232063550', 'bg' => 'bg-indigo-100', 'text' => 'text-indigo-600'],
                             ];
                             @endphp
 

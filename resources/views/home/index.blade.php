@@ -51,27 +51,29 @@
                 {{-- Avatar / Visual Hero --}}
                 <div class="flex justify-center lg:justify-end" data-aos="fade-left" data-aos-delay="150">
                     <div class="relative">
-                        {{-- Background blob --}}
-                        <div class="w-72 h-72 md:w-96 md:h-96 bg-primary rounded-[60%_40%_30%_70%/60%_30%_70%_40%] flex items-center justify-center relative overflow-hidden">
+                        <div class="w-72 h-72 md:w-96 md:h-96 relative">
 
-                            {{-- Placeholder avatar --}}
-                            <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/30 absolute bottom-0">
-                                <div class="w-full h-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center">
-                                    <svg viewBox="0 0 200 200" class="w-48 h-48 opacity-30" fill="white">
-                                        <circle cx="100" cy="70" r="40"/>
-                                        <ellipse cx="100" cy="160" rx="60" ry="50"/>
-                                    </svg>
-                                    <span class="absolute text-white/40 text-6xl font-heading font-bold">YN</span>
+                            <div class="absolute inset-0 bg-primary rounded-[60%_40%_30%_70%/60%_30%_70%_40%] overflow-hidden">
+                                {{-- Interactive 3D profile model --}}
+                                <div id="heroModelStage"
+                                     class="absolute inset-0 cursor-grab active:cursor-grabbing">
+                                    <canvas id="heroModelCanvas"
+                                            class="block w-full h-full"
+                                            aria-label="Interactive 3D profile model"></canvas>
+                                    <div id="heroModelLoading"
+                                         class="absolute inset-0 flex items-center justify-center bg-primary text-secondary text-sm font-semibold transition-opacity duration-300">
+                                        Loading 3D...
+                                    </div>
                                 </div>
                             </div>
 
                             {{-- Floating badges --}}
-                            <div class="absolute -top-4 -right-4 bg-white rounded-2xl px-4 py-2 shadow-lg">
+                            <div class="hidden sm:block absolute -top-4 -right-4 bg-white rounded-2xl px-4 py-2 shadow-lg pointer-events-none">
                                 <p class="text-xs text-dark/50 font-medium">Currently studying</p>
                                 <p class="text-sm font-bold text-secondary">Multimedia</p>
                             </div>
 
-                            <div class="absolute -bottom-2 -left-4 bg-secondary rounded-2xl px-4 py-2 shadow-lg">
+                            <div class="hidden sm:block absolute -bottom-2 -left-4 bg-secondary rounded-2xl px-4 py-2 shadow-lg pointer-events-none">
                                 <p class="text-background/60 text-xs">Semester</p>
                                 <p class="text-primary font-bold text-lg">04</p>
                             </div>
@@ -191,4 +193,116 @@
         </div>
     </section>
 
+@endsection
+
+@section('scripts')
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+}
+</script>
+<script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    const stage = document.getElementById('heroModelStage');
+    const canvas = document.getElementById('heroModelCanvas');
+    const loading = document.getElementById('heroModelLoading');
+    const modelUrl = @json(asset('models/shilmi-profile.glb'));
+
+    if (stage && canvas) {
+        const scene = new THREE.Scene();
+        const renderer = new THREE.WebGLRenderer({
+            canvas,
+            alpha: true,
+            antialias: true,
+            powerPreference: 'high-performance',
+        });
+
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.1;
+
+        const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
+        camera.position.set(0, 0.18, 4.4);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.enablePan = false;
+        controls.enableZoom = false;
+        controls.rotateSpeed = 0.85;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.6;
+        controls.minPolarAngle = Math.PI * 0.43;
+        controls.maxPolarAngle = Math.PI * 0.57;
+
+        const ambientLight = new THREE.HemisphereLight(0xffffff, 0x0a6847, 2.2);
+        scene.add(ambientLight);
+
+        const keyLight = new THREE.DirectionalLight(0xffffff, 2.4);
+        keyLight.position.set(3, 5, 4);
+        scene.add(keyLight);
+
+        const fillLight = new THREE.DirectionalLight(0xf3ca52, 1.4);
+        fillLight.position.set(-4, 2, 2);
+        scene.add(fillLight);
+
+        const loader = new GLTFLoader();
+        loader.load(
+            modelUrl,
+            (gltf) => {
+                const model = gltf.scene;
+                const box = new THREE.Box3().setFromObject(model);
+                const size = box.getSize(new THREE.Vector3());
+                const center = box.getCenter(new THREE.Vector3());
+                const maxDimension = Math.max(size.x, size.y, size.z);
+
+                model.position.sub(center);
+                model.position.y -= 0.32;
+                model.scale.setScalar(2.05 / maxDimension);
+                model.rotation.y = Math.PI * 0.12;
+
+                scene.add(model);
+                controls.target.set(0, -0.05, 0);
+
+                if (loading) {
+                    loading.style.opacity = '0';
+                    loading.style.pointerEvents = 'none';
+                    window.setTimeout(() => {
+                        loading.hidden = true;
+                    }, 300);
+                }
+            },
+            undefined,
+            () => {
+                if (loading) {
+                    loading.textContent = '3D model could not be loaded.';
+                }
+            }
+        );
+
+        const resizeRenderer = () => {
+            const { width, height } = stage.getBoundingClientRect();
+            renderer.setSize(width, height, false);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        };
+
+        new ResizeObserver(resizeRenderer).observe(stage);
+        resizeRenderer();
+
+        const animate = () => {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    }
+</script>
 @endsection

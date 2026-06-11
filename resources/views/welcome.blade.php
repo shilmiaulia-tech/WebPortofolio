@@ -15,10 +15,10 @@
         </div>
 
         <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 tracking-tight">
-            Hai, Aku <span class="text-blue-600">Shilmi Aulia</span> ✨
+            Hai, Aku <span class="text-blue-600">Shilmi Aulia Yustina</span> ✨
         </h1>
         <p class="text-lg text-slate-600 mt-3 max-w-md font-medium">
-            Multimedia & Broadcasting Student | UI/UX Enthusiast & Visual Asset Creator
+            Multimedia & Broadcasting Student | Music Enthusiast & Creative Creator
         </p>
 
         <div class="mt-8 flex gap-4">
@@ -43,8 +43,8 @@
 
             <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition">
                 <div class="text-blue-500 text-2xl mb-3">📐</div>
-                <h3 class="text-lg font-bold text-slate-800 mb-2">Visual Assets</h3>
-                <p class="text-slate-600 text-sm">Membuat aset visual digital, termasuk pemodelan objek 3D untuk kebutuhan media interaktif.</p>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Script & copywriter</h3>
+                <p class="text-slate-600 text-sm">Membuat script video, copywriting iklan, dan konten digital yang menarik.</p>
             </div>
 
             <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition">

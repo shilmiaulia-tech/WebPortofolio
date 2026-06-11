@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Experience;
+
 class ExperienceController extends Controller
 {
     public function index()
     {
-        return view('experience.index');
+        $experiences = Experience::orderBy('order')->get();
+
+        return view('experience.index', compact('experiences'));
     }
 }
