@@ -37,14 +37,9 @@
                 {{-- Kolom Kanan: Info Card --}}
                 <div class="flex flex-col gap-4" data-aos="fade-left" data-aos-delay="100">
 
-                    {{-- Photo placeholder --}}
+                    {{-- Photo Card --}}
                     <div class="bg-secondary rounded-3xl aspect-square flex items-center justify-center overflow-hidden">
-                        <div class="text-center">
-                            <div class="w-24 h-24 bg-primary/20 rounded-full mx-auto mb-3 flex items-center justify-center">
-                                <span class="font-heading font-bold text-4xl text-primary">YN</span>
-                            </div>
-                            <p class="text-background/40 text-xs">Photo placeholder</p>
-                        </div>
+                        <img src="/shilmi%20gallery.jpeg" alt="Shilmi Portrait" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                     </div>
 
                     {{-- Quick Info --}}
