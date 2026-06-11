@@ -63,6 +63,8 @@
 
 {{-- AI Assistant Script --}}
 <script>
+    let userMessageCount = 0; // Track user messages
+    
     const aiResponses = {
         default: "Maaf, saya masih belajar. Coba tanyakan tentang portfolio, skills, atau pengalaman Shilmi!",
         greeting: ["Hai! 👋", "Halo! 😊", "Selamat datang! 🎉"],
@@ -75,6 +77,7 @@
         achievement: "Shilmi memiliki berbagai achievement dan prestasi. Lihat halaman Achievement untuk detail lengkapnya!",
         instagram: "Kamu bisa follow Instagram Shilmi untuk update konten terbaru!",
         behance: "Portfolio design Shilmi tersedia di Behance!",
+        moreInfo: "Untuk informasi lebih lanjut, silahkan cek di <a href='/contact' class='text-secondary font-semibold hover:underline'>halaman Contact</a> 😊",
     };
 
     function toggleChat() {
@@ -100,10 +103,11 @@
         // Add user message
         addMessage(message, 'user');
         input.value = '';
+        userMessageCount++; // Increment message count
 
         // Simulate AI response delay
         setTimeout(() => {
-            const response = getAIResponse(message);
+            const response = getAIResponse(message, userMessageCount);
             addMessage(response, 'ai');
         }, 300);
     }
@@ -143,7 +147,12 @@
         messagesArea.scrollTop = messagesArea.scrollHeight;
     }
 
-    function getAIResponse(message) {
+    function getAIResponse(message, messageCount) {
+        // If second message (messageCount == 2), give contact info response
+        if (messageCount === 2) {
+            return aiResponses.moreInfo;
+        }
+
         const lowerMessage = message.toLowerCase();
 
         if (lowerMessage.includes('halo') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
